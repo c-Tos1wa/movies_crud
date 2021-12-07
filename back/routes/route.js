@@ -9,9 +9,9 @@ route.get('/:id', controller.getOneMovie);
 
 route.post('/submit', controller.postOneMovie);
 
-route.put('/editing/:id', controller.putOneMovie);
+route.put('/edit/:id', controller.putOneMovie);
 
-route.delete('/deleting/:id', controller.deleteOneMovie);
+route.delete('/delete/:id', controller.deleteOneMovie);
 
 module.exports = route;
 

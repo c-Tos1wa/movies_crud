@@ -66,6 +66,9 @@ const putMovie = (id, modifiedFilm) => {
 }
 
 const deleteMovie = (id) => {
+  if(!id){
+    return
+  }
   const index = movies.findIndex((movie) => movie.id == id);
   const deletedMovie = movies[index];
   movies.splice(index, 1);
