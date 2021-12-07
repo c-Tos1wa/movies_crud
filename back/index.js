@@ -12,5 +12,5 @@ app.use('/filmes', routes);
 
 
 app.listen(port, () => {
-  console.log(`App rodando em http://localhost:${port}`)
+  console.log(`App rodando em http://localhost:${port}/filmes`)
 })
