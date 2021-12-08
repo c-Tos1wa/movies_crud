@@ -1,0 +1,15 @@
+/* @font-face{
+  font-family: veteran;
+  src: url('veteran typewriter.ttf');
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.poster{
+  width: 450; 
+  height: 600;
+}

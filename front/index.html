@@ -4,23 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Canal de Filmes</title>
+  <link rel="stylesheet" href="./style/style.css">
+  <title>Canal Filmes</title>
 </head>
 <body>
   <header>
-    <h1>Bem-vindo ao Canal de Filmes</h1>
+    <h1>Bem-vindo ao Canal Filmes</h1>
   </header>
   <main>
-    <div class="input-movie">
+    <div id="input-movie">
       <div class="input-one">
-        <input type="text" placeholder="Digite o nome do filme" />
-        <input type="text" placeholder="Coloque o link do pôster ou imagem do filme" />
+        <input type="text" id="name" placeholder="Digite o nome do filme" />
+        <input type="text" id="image" placeholder="Coloque o link do pôster ou imagem do filme" />
       </div>
       <div class="input-two">
-        <input type="text" placeholder="Adicione o gênero do filme" />
-        <input type="number" placeholder="Dê uma nota de 0 a 10" />
+        <input type="text" id="genre" placeholder="Adicione o gênero do filme" />
+        <input type="number" id="score" placeholder="Dê uma nota de 0 a 10" />
       </div>
-      <button class="submit-button" type="submit">Enviar</button>
+      <button class="submit-button" onclick="submit()">Enviar</button>
     </div>
     <div id="list"></div>
   </main>
