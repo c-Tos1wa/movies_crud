@@ -26,8 +26,8 @@ const postOneMovie = (req, res) => {
 }
 
 const putOneMovie = (req, res) => {
-  if(!req.body.name || !req.body.image || !req.boyd.genre){
-    res.status(400).send({message: "Não foi possível fazer a edição, por favor preencha os campos nome, gênero e imagem"})
+  if(!req.body.name || !req.body.image){
+    res.status(400).send({message: "Não foi possível fazer a edição, por favor preencha os campos nome e imagem"})
   }
   const id = req.params.id;
   const dataEdit = req.body;

@@ -54,7 +54,7 @@ const postMovie = (newMovie) => {
 
 const putMovie = (id, modifiedFilm) => {
   const index = movies.findIndex((film) => film.id == id);
-  if (index){
+  if (index >= 0){
     movies[index] = {
       ...movies[index],
       ...modifiedFilm

@@ -4,35 +4,32 @@ const cards = document.getElementById('list');
 let edit = false;
 let idEdit = 0;
 
-const getAll = async() => {
+const getAll = async () => {
   const response = await fetch(`${baseAPI}`);
   const movies = await response.json();
 
   movies.map((film) => {
-    if(film.watched === true){
-      cards.insertAdjacentHTML('beforeend', 
+    cards.insertAdjacentHTML('beforeend',
       `
+      <div>
         <img id="poster"  width=400 height=500 
           src=${film.image} alt=${film.name} 
         />
-        <p><strong>${film.name}</strong></p>
-        <p>${film.genre}</p>
-        <p>${film.score}</p>
-        <p>Assistido</p>
-        <button onclick="modify(${film.id})">Editar</button>
-        `
-        )} 
-        else {
-          cards.insertAdjacentHTML('beforeend', 
+        <div>
+          <p><strong>${film.name}</strong></p>
+          <p>${film.genre}</p>
+          <p>${film.score}</p>
+          <div>
+            <p>Assistido</p> 
+            <input type="checkbox" />
+          </div>
+          <button onclick="modify(${film.id})">Editar</button>
+          <button onclick="erase(${film.id})">Apagar</button>
+        </div>
+      </div>
       `
-        <img class="poster"  width=400 height=500 
-          src=${film.image} alt=${film.name} />
-        <p><strong>${film.name}</strong></p>
-        <p>${film.genre}</p>
-        <p>${film.score}</p>
-        `
-        )}
-    })
+    );
+  })
 }
 
 getAll();
@@ -73,13 +70,13 @@ const submit = async () => {
   }
 }
 
-const put = async (edited) => {
-  const response = await fetch(`${baseAPI}/edit/${idEdit}`,{
+const put = async (editedFilm) => {
+  const response = await fetch(`${baseAPI}/edit/${idEdit}`, {
     method: 'PUT',
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(edited)
+    body: JSON.stringify(editedFilm)
   })
 
   const newData = await response.json();
@@ -95,27 +92,40 @@ const put = async (edited) => {
 
 const modify = async (id) => {
   edit = true;
-  idEdit = 0;
+  idEdit = id;
 
-  const movieMod = await getById(id);
+  const modifiedMovie = await getID(id);
 
-  document.getElementById('image').value = movieMod.image;
-  document.getElementById('name').value = movieMod.name;
-  document.getElementById('genre').value = movieMod.genre;
-  document.getElementById('score').value = movieMod.score;
- 
-  //  cards.insertAdjacentHTML("beforeend", `
-  //   <input id=${movieMod.watched} type=checked />
-  //  `)
+  document.getElementById('image').value = modifiedMovie.image;
+  document.getElementById('name').value = modifiedMovie.name;
+  document.getElementById('genre').value = modifiedMovie.genre;
+  document.getElementById('score').value = modifiedMovie.score;
+
 }
 
+const getID = async (idMovie) => {
+  const response = await fetch(`${baseAPI}/${idMovie}`);
+  const data = await response.json();
+  return data
+}
 
+const erase = async (id) => {
+  const response = await fetch(`${baseAPI}/delete/${id}`, {
+    method: 'DELETE'
+  })
+  const result = await response.json();
+  alert(result.message);
+
+  cards.innerHTML = '';
+  getAll();
+  reset();
+}
 
 const reset = () => {
   document.getElementById('image').value = '';
   document.getElementById('name').value = '';
   document.getElementById('genre').value = '';
-  document.getElementById('score').value = '';  
+  document.getElementById('score').value = '';
 }
 
 
