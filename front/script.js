@@ -11,20 +11,23 @@ const getAll = async () => {
   movies.map((film) => {
     cards.insertAdjacentHTML('beforeend',
       `
-      <div>
-        <img id="poster"  width=400 height=500 
-          src=${film.image} alt=${film.name} 
-        />
-        <div>
-          <p><strong>${film.name}</strong></p>
-          <p>${film.genre}</p>
-          <p>${film.score}</p>
-          <div>
-            <p>Assistido</p> 
-            <input type="checkbox" />
+      <div class="card mt-3 rounded">
+        <div class="text-center">
+            <img class="card-img-top py-2" style="width: 15em;" 
+              src=${film.image} alt=${film.name} />
+        </div>
+        <div class="card-body text-center">
+          <p class="card-text lead">${film.name}</p>
+          <p class="card-text">${film.genre}</p>
+          <p class="card-text">Nota: ${film.score}</p>
+          <div class="form-check form-switch text-center">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Assistido</label>
           </div>
-          <button onclick="modify(${film.id})">Editar</button>
-          <button onclick="erase(${film.id})">Apagar</button>
+          <div class="text-center m-2">
+            <button class="btn btn-success py-2 px-3" onclick="modify(${film.id})">Editar</button>
+            <button class="btn btn-danger py-2 px-3" onclick="erase(${film.id})">Apagar</button>
+          </div>
         </div>
       </div>
       `

@@ -1,15 +1,26 @@
-/* @font-face{
-  font-family: veteran;
-  src: url('veteran typewriter.ttf');
-} */
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
 
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  font-family: 'Fuzzy Bubbles', cursive !important;
 }
 
-.poster{
-  width: 450; 
-  height: 600;
+.text-primary{
+  color: #ffffff !important;
+}
+
+.bg-primary{
+  background-color: #575FCF !important;
+}
+
+.bg-danger{
+  background-color: #DD3C3C !important;
+}
+
+.btn-success {
+  background-color: #264653 !important;
+  border-color: #264653 !important;
+  color: #ffffff !important;
 }

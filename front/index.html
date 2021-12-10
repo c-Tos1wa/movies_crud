@@ -3,31 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./style/style.css">
   <title>Canal Filmes</title>
 </head>
 <body>
-  <header>
-    <h1>Bem-vindo ao Canal Filmes</h1>
+  <header class="bg-primary text-primary pt-2">
+    <h2 class="text-center">Bem-vindo ao Canal Filmes</h2>
   </header>
-  <main>
-    <div id="input-movie">
-      <div class="input-one">
-        <input type="text" id="name" placeholder="Digite o nome do filme" required />
-        <input type="text" id="image" placeholder="Coloque o link do pôster ou imagem do filme" required />
+  <main class="p-3">
+    <div id="input-movie" class="text-center row m-2">
+      <div class="col m-3">
+        <input class="form-control p-2 my-2" type="text" id="name" placeholder="Digite o nome do filme" required />
+        <input class="form-control p-2 my-2" type="text" id="image" placeholder="Coloque o link do pôster ou imagem do filme" required />
       </div>
-      <div class="input-two">
-        <input type="text" id="genre" placeholder="Adicione o gênero do filme" />
-        <input type="number" id="score" placeholder="Dê uma nota de 0 a 10" />
+      <div class="col m-3">
+        <input class="form-control p-2 m-2" type="text" id="genre" placeholder="Adicione o gênero do filme" />
+        <input class="form-control p-2 m-2" type="number" id="score" placeholder="Dê uma nota de 0 a 10" />
       </div>
-      <button class="submit-button" onclick="submit()">Enviar</button>
+      <div>
+        <button class="btn btn-success btn-lg py-2 px-3" onclick="submit()">Enviar</button>
+      </div>
     </div>
-    <div id="list"></div>
+    <div id="list" class="py-2"></div>
   </main>
-  <footer>
-    <span>Desenvolvido por Cristina T. Iwassaki.</span>
+  <footer class="text-center bg-primary pt-2">
+    <span class="text-primary">Desenvolvido por Cristina T. Iwassaki.</span>
   </footer>
-<script src='script.js'></script> 
+
+<script src='script.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+  crossorigin="anonymous"></script>
+
 </body>
 </html>
