@@ -4,7 +4,7 @@ const movies = [{
   image: "https://www.magazine-hd.com/apps/wp/wp-content/uploads/2021/06/free-guy-poster-12agosto.jpg",
   genre: "Comédia",
   score: 7.2,
-  watched: true,
+  watched: false,
 },
 {
   id: 2,
@@ -20,7 +20,7 @@ const movies = [{
   image: "https://cdn.europosters.eu/image/1300/posters/james-bond-no-time-to-die-profile-i114389.jpg",
   genre: "Action",
   score: 7.4,
-  watched: true,
+  watched: false,
 },
 {
   id: 4,
@@ -36,7 +36,7 @@ const movies = [{
   image: "https://sm.ign.com/ign_pt/screenshot/default/ghostbusters-afterlife-poster-1_u7df.jpg",
   genre: "Aventura",
   score: 7.7,
-  watched: true,
+  watched: false,
 }]
 
 const getMovies = () => movies;

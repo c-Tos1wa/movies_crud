@@ -12,24 +12,21 @@ const getAll = async () => {
     cards.insertAdjacentHTML('beforeend',
       `
       <div class="card-group">
-        <div class="card mt-3 rounded row">
-          <div class="text-center col">
-              <img class="card-img-top py-2" style="width: 20em;" 
+        <div class="card mt-3 rounded">
+          <div class="text-center">
+              <img class="card-img-top py-2" style="width:auto;height:50em;" 
                 src=${film.image} alt=${film.name} />
-                <div class="card-body text-center col-6">
-                <p class="card-text">${film.name}</p>
-                <p class="card-text">${film.genre}</p>
-                <p class="card-text">Nota: ${film.score}</p>
-                </div>
-                <div class="form-check form-switch p-10">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Assistido</label>
-                </div>
-            </div>
-            <div class="text-center m-2 col">
+              <div class="card-body">
+                  <p class="card-text h3">${film.name}</p>
+                  <p class="card-text h4">${film.genre}</p>
+                  <p class="card-text h4">Nota: ${film.score}</p>
+                  <button class="btn btn-info p-2" onclick="watched(${film.id})">Assistido?</button>
+              </div>  
+            <div class="text-center m-2">
               <button class="btn btn-success py-2 px-3" onclick="modify(${film.id})">Editar</button>
               <button class="btn btn-danger py-2 px-3" onclick="erase(${film.id})">Apagar</button>
             </div>
+          </div> 
         </div>
       </div>
       `
@@ -124,6 +121,10 @@ const erase = async (id) => {
   cards.innerHTML = '';
   getAll();
   reset();
+}
+
+const watched = (id) => {
+  
 }
 
 const reset = () => {

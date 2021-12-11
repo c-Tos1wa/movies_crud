@@ -24,3 +24,15 @@
   border-color: #264653 !important;
   color: #ffffff !important;
 }
+
+.btn-success:hover{
+  background-color: #ffffff !important;
+  border-color: #264653 !important;
+  color: #264653 !important;
+}
+
+.btn-danger:hover{
+  background-color: #ffffff;
+  border-color: #DD3C3C;
+  color: #DD3C3C;
+}
