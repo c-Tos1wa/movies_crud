@@ -37,7 +37,16 @@ const movies = [{
   genre: "Aventura",
   score: 7.7,
   watched: false,
-}]
+},
+{
+  id: 6,
+  name: "Encanto",
+  image: "https://sobresagas.com.br/wp-content/uploads/2021/07/encanto-poster.jpg",
+  genre: "Família",
+  score: 7.7,
+  watched: false,
+}
+]
 
 const getMovies = () => movies;
 
