@@ -1,6 +1,7 @@
 const baseAPI = 'http://localhost:3000/filmes'
 
 const cards = document.getElementById('list');
+const msg = document.getElementById('message');
 let edit = false;
 let idEdit = 0;
 
@@ -11,18 +12,18 @@ const getAll = async () => {
   movies.map((film) => {
     cards.insertAdjacentHTML('beforeend',
       `
-      <div class="card-group">
+      <div class="col-6 p-2">
         <div class="card mt-3 rounded">
           <div class="text-center">
               <img class="card-img-top py-2" style="width:auto;height:50em;" 
                 src=${film.image} alt=${film.name} />
-              <div class="card-body">
+              <div class="card-body my-3">
                   <p class="card-text h3">${film.name}</p>
                   <p class="card-text h4">${film.genre}</p>
                   <p class="card-text h4">Nota: ${film.score}</p>
-                  <button class="btn btn-info p-2" onclick="watched(${film.id})">Assistido?</button>
+                  ${film.watched ? '<p class="card-text h4"> Status: Assistido</p>' : `<button class="btn btn-info p-2" onclick="watched(${film.id})">Assistido?</button>`}
               </div>  
-            <div class="text-center m-2">
+            <div class="text-center m-2 p-2">
               <button class="btn btn-success py-2 px-3" onclick="modify(${film.id})">Editar</button>
               <button class="btn btn-danger py-2 px-3" onclick="erase(${film.id})">Apagar</button>
             </div>
@@ -46,7 +47,12 @@ const post = async (submission) => {
   })
 
   const data = await response.json();
-  alert(data.message)
+  msg.insertAdjacentHTML("beforeend", `
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <p class="h5 p-3">${data.message}</p><button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  `);
+
   cards.innerHTML = '';
   getAll();
   reset();
@@ -82,7 +88,11 @@ const put = async (editedFilm) => {
   })
 
   const newData = await response.json();
-  alert(newData.message)
+  msg.insertAdjacentHTML("beforeend", `
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <p class="h5 p-3">${newData.message}</p><button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  `);
 
   cards.innerHTML = ''
   getAll();
@@ -116,15 +126,28 @@ const erase = async (id) => {
     method: 'DELETE'
   })
   const result = await response.json();
-  alert(result.message);
-
+  msg.insertAdjacentHTML("beforeend", `
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <p class="h5 p-3">${result.message}</p><button type="button" class="btn-close p-3" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  `);
   cards.innerHTML = '';
   getAll();
   reset();
 }
 
-const watched = (id) => {
-  
+const watched = async (id) => {
+  const film = await getID(id);
+  film.watched = true;
+  const response = await fetch(`${baseAPI}/edit/${id}`, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(film)
+  })
+  cards.innerHTML = '';
+  getAll();
 }
 
 const reset = () => {

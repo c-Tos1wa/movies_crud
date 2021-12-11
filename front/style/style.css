@@ -36,3 +36,10 @@
   border-color: #DD3C3C;
   color: #DD3C3C;
 }
+
+.alert-success{
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
